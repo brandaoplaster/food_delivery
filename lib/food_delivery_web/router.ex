@@ -7,6 +7,8 @@ defmodule FoodDeliveryWeb.Router do
 
   scope "/api", FoodDeliveryWeb do
     pipe_through :api
+
+    get "/", WelcomeController, :index
   end
 
   # Enables LiveDashboard only for development
