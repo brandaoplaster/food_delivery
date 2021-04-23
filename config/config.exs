@@ -10,6 +10,10 @@ use Mix.Config
 config :food_delivery,
   ecto_repos: [FoodDelivery.Repo]
 
+config :food_delivery, FoodDeliveryWeb.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 # Configures the endpoint
 config :food_delivery, FoodDeliveryWeb.Endpoint,
   url: [host: "localhost"],
