@@ -22,6 +22,10 @@ defmodule FoodDeliveryWeb.ErrorView do
     %{message: translate_errors(changeset)}
   end
 
+  def render("error.json", %{result: result}) do
+    %{message: result}
+  end
+
   defp translate_errors(chageset) do
     traverse_errors(chageset, fn {message, opts} ->
       Enum.reduce(opts, message, fn {key, value}, acc ->

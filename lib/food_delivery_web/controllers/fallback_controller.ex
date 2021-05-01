@@ -7,6 +7,6 @@ defmodule FoodDeliveryWeb.FallbackController do
     conn
     |> put_status(status)
     |> put_view(ErrorView)
-    |> render("400.json", result: result)
+    |> render("error.json", result: result)
   end
 end
