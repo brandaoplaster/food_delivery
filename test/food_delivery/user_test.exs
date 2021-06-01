@@ -1,37 +1,22 @@
 defmodule FoodDelivery.UserTest do
   use FoodDelivery.DataCase, async: true
 
+  import FoodDelivery.Factory
+
   alias Ecto.Changeset
   alias FoodDelivery.User
 
   describe "changeset/2" do
     test "it should return a valid changeset, when all params are valid" do
-      params = %{
-        age: 28,
-        address: "rua xx",
-        cep: "12345678",
-        cpf: "12345678901",
-        email: "test@gmail.com",
-        password_hash: "123456",
-        password: "123456",
-        name: "Test",
-      }
+      params = build(:user_params)
 
       response = User.changeset(params)
 
-      assert %Changeset{changes: %{name: "Test"}, valid?: true} = response
+      assert %Changeset{changes: %{name: "Ruby"}, valid?: true} = response
     end
 
     test "it should return an invalid changeset, when one of the params is invalid" do
-      params = %{
-        age: 15,
-        address: "rua xx",
-        cep: "12345678",
-        cpf: "12345678901",
-        email: "test@gmail.com",
-        password: "123",
-        name: "Test",
-      }
+      params = build(:user_params, %{age: 15})
 
       response = User.changeset(params)
 
@@ -43,16 +28,7 @@ defmodule FoodDelivery.UserTest do
 
   describe "update_changeset/2" do
     test "it should return a valid changeset, when updated params are valid" do
-      params = %{
-        age: 28,
-        address: "rua xx",
-        cep: "12345678",
-        cpf: "12345678901",
-        email: "test@gmail.com",
-        password_hash: "123456",
-        password: "123456",
-        name: "Test",
-      }
+      params = params = build(:user_params)
 
       update_params = %{name: "Ruby"}
 
