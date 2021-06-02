@@ -21,11 +21,9 @@ defmodule FoodDelivery.Users.CreateTest do
         build(:user_params, %{age: 15})
         |> Create.call()
 
-
-
       expected_response = %{age: ["must be greater than or equal to 18"]}
 
-      assert {:error, %Error{status: :bad_request, result: changeset}} = response
+      assert {:error, %Error{status: :bad_request, message: changeset}} = response
       assert errors_on(changeset) == expected_response
     end
   end
