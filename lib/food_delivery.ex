@@ -1,7 +1,7 @@
 defmodule FoodDelivery do
   alias FoodDelivery.Users.Create, as: UserCreate
-  alias FoodDelivery.Users.Get, as: UserGet
   alias FoodDelivery.Users.Delete, as: UserDelete
+  alias FoodDelivery.Users.Get, as: UserGet
   alias FoodDelivery.Users.Update, as: UserUpdate
 
   defdelegate create_user(params), to: UserCreate, as: :call

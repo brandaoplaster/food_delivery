@@ -1,7 +1,7 @@
 defmodule FoodDelivery.Users.Update do
   alias FoodDelivery.{Error, Repo, User}
 
-  defp call(%{"id" => id} = params) do
+  def call(%{"id" => id} = params) do
     case Repo.get(User, id) do
       nil -> {:error, Error.build_user_not_found_error()}
       user -> do_update(user, params)
