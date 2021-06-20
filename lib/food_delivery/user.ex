@@ -11,14 +11,14 @@ defmodule FoodDelivery.User do
   @derive {Jason.Encoder, only: [:age, :address, :cep, :cpf, :email, :name]}
 
   schema "users" do
-    field(:age, :integer)
-    field(:address, :string)
-    field(:cep, :string)
-    field(:cpf, :string)
-    field(:email, :string)
-    field(:password_hash, :string)
-    field(:password, :string, virtual: true)
-    field(:name, :string)
+    field :age, :integer
+    field :address, :string
+    field :cep, :string
+    field :cpf, :string
+    field :email, :string
+    field :password_hash, :string
+    field :password, :string, virtual: true
+    field :name, :string
 
     timestamps()
   end
