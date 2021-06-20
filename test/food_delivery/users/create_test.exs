@@ -1,19 +1,19 @@
 defmodule FoodDelivery.Users.CreateTest do
   use FoodDelivery.DataCase, async: true
 
-  import FoodDelivery.Factory
-
-  alias Ecto.Changeset
   alias FoodDelivery.{Error, User}
   alias FoodDelivery.Users.Create
 
+  import FoodDelivery.Factory
+
   describe "call/1" do
     test "when all params are valid, returns the user" do
-      result =
-        build(:user_params)
-        |> Create.call()
+      params = build(:user_params)
 
-      assert {:ok, %User{id: _id, age: 29, email: "Ruby@gmail.com"}} = result
+      response = Create.call(params)
+
+      assert {:ok, %User{id: _id, age: 27, cpf: "12345678901", email: "Ruby@gmail.com"}} =
+               response
     end
 
     test "when there are invalid params, returns an error" do

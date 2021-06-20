@@ -1,5 +1,5 @@
 defmodule FoodDelivery.Factory do
-  use ExMachina
+  use ExMachina.Ecto
 
   def user_params_factory do
     %{
@@ -9,7 +9,7 @@ defmodule FoodDelivery.Factory do
       cpf: "12345678901",
       email: "Ruby@gmail.com",
       password: "123456",
-      name: "Ruby",
+      name: "Ruby"
     }
   end
 end

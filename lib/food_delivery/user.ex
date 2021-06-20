@@ -1,6 +1,5 @@
 defmodule FoodDelivery.User do
   use Ecto.Schema
-
   import Ecto.Changeset
 
   alias Ecto.Changeset
@@ -9,15 +8,17 @@ defmodule FoodDelivery.User do
 
   @required_params [:age, :address, :cep, :cpf, :email, :password, :name]
 
+  @derive {Jason.Encoder, only: [:age, :address, :cep, :cpf, :email, :name]}
+
   schema "users" do
-    field :age, :integer
-    field :address, :string
-    field :cep, :string
-    field :cpf, :string
-    field :email, :string
-    field :password_hash, :string
-    field :password, :string, virtual: true
-    field :name, :string
+    field(:age, :integer)
+    field(:address, :string)
+    field(:cep, :string)
+    field(:cpf, :string)
+    field(:email, :string)
+    field(:password_hash, :string)
+    field(:password, :string, virtual: true)
+    field(:name, :string)
 
     timestamps()
   end
@@ -26,6 +27,7 @@ defmodule FoodDelivery.User do
     struct
     |> cast(params, @required_params)
     |> validate_required(@required_params)
+    |> validate_length(:password, min: 6)
     |> validate_length(:cep, is: 8)
     |> validate_length(:cpf, is: 11)
     |> validate_number(:age, greater_than_or_equal_to: 18)

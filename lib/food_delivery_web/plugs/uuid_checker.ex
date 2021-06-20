@@ -6,14 +6,14 @@ defmodule FoodDeliveryWeb.Plugs.UUIDChecker do
 
   def init(options), do: options
 
-  def call(%Conn{params: %{"id" => id}} = conn, _options) do
+  def call(%Conn{params: %{"id" => id}} = conn, _opts) do
     case UUID.cast(id) do
       :error -> render_error(conn)
       {:ok, _uuid} -> conn
     end
   end
 
-  def call(conn, _options), do: conn
+  def call(%Conn{} = conn, _opts), do: conn
 
   defp render_error(conn) do
     body = Jason.encode!(%{message: "Invalid UUID"})
