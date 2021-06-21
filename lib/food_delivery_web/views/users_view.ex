@@ -3,15 +3,12 @@ defmodule FoodDeliveryWeb.UsersView do
 
   alias FoodDelivery.User
 
-  def render("create.json", %{user: %User{}} = user) do
+  def render("create.json", %{user: %User{} = user}) do
     %{
-      message: "User created!",
-      user: %{
-        id: user.id,
-        name: user.name
-      }
+      message: "User created successfully",
+      user: user
     }
   end
 
-  def render("user.json", %{user: %User{}} = user), do: %{user: user}
+  def render("user.json", %{user: %User{} = user}), do: %{user: user}
 end

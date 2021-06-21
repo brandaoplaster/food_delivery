@@ -8,7 +8,7 @@ defmodule FoodDelivery.User do
 
   @required_params [:age, :address, :cep, :cpf, :email, :password, :name]
 
-  @derive {Jason.Encoder, only: [:age, :address, :cep, :cpf, :email, :name]}
+  @derive {Jason.Encoder, only: [:age, :address, :cep, :id, :cpf, :email, :name]}
 
   schema "users" do
     field :age, :integer
