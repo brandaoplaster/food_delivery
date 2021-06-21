@@ -3,6 +3,7 @@ defmodule FoodDelivery.User do
   import Ecto.Changeset
 
   alias Ecto.Changeset
+  alias FoodDelivery.Order
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
@@ -19,6 +20,8 @@ defmodule FoodDelivery.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     field :name, :string
+
+    has_many :orders, Order
 
     timestamps()
   end
